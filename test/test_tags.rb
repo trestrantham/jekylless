@@ -62,6 +62,26 @@ CONTENT
       assert_match %{<pre>Æ\n</pre>}, @result
     end
   end
+  
+  context "post content has permalink tag" do
+    context "for non-existent or unpublished post" do 
+      setup do
+        create_post("{% permalink 'Foo', '2009-09-09-foo' %}")
+      end
+      
+      should "render post not found" do
+        assert_match /.+Permalink for post .+ not found.+/, @result
+      end
+    end
+    
+    context "with invalid syntax" do
+      should "raise a SyntaxError exception" do
+        assert_raise(SyntaxError) do
+          create_post("{% permalink 'invalid', 'syntax' %}")
+        end
+      end
+    end
+  end
 
   context "simple post with markdown and pre tags" do
     setup do
