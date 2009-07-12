@@ -19,11 +19,13 @@ class TestSite < Test::Unit::TestCase
       before_posts = @site.posts.length
       before_layouts = @site.layouts.length
       before_categories = @site.categories.length
+      before_permalinks = @site.permalinks.length
 
       @site.process
       assert_equal before_posts, @site.posts.length
       assert_equal before_layouts, @site.layouts.length
       assert_equal before_categories, @site.categories.length
+      assert_equal before_permalinks, @site.permalinks.length
     end
 
     should "read layouts" do
@@ -35,8 +37,10 @@ class TestSite < Test::Unit::TestCase
       @site.read_posts('')
       posts = Dir[source_dir('_posts', '*')]
       assert_equal posts.size - 1, @site.posts.size
+      assert_equal @site.posts.size, @site.permalinks.size
+      assert_equal @site.permalinks['2008-10-18-foo-bar'], '/2008/10/18/foo-bar.html'
     end
-
+    
     should "deploy payload" do
       clear_dest
       @site.process

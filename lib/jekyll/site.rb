@@ -1,7 +1,7 @@
 module Jekyll
 
   class Site
-    attr_accessor :config, :layouts, :posts, :categories, :exclude,
+    attr_accessor :config, :layouts, :posts, :categories, :exclude, :permalinks,
                   :source, :dest, :lsi, :pygments, :permalink_style, :tags
 
     # Initialize the site
@@ -24,6 +24,7 @@ module Jekyll
 
     def reset
       self.layouts         = {}
+      self.permalinks      = {}
       self.posts           = []
       self.categories      = Hash.new { |hash, key| hash[key] = [] }
       self.tags            = Hash.new { |hash, key| hash[key] = [] }
@@ -113,7 +114,8 @@ module Jekyll
       # ignore missing layout dir
     end
 
-    # Read all the files in <base>/_posts and create a new Post object with each one.
+    # Read all the files in <base>/_posts and create a new Post object 
+    # and permalink name-url pair with each one.
     #
     # Returns nothing
     def read_posts(dir)
@@ -128,6 +130,7 @@ module Jekyll
 
           if post.published
             self.posts << post
+            self.permalinks[f.chomp(post.ext)] = post.url
             post.categories.each { |c| self.categories[c] << post }
             post.tags.each { |c| self.tags[c] << post }
           end
