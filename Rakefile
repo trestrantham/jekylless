@@ -6,13 +6,12 @@ begin
   gem 'jeweler', '>= 0.11.0'
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "jekyll"
+    s.name = "tatey-jekyll"
     s.summary = %Q{Jekyll is a simple, blog aware, static site generator.}
     s.email = "tom@mojombo.com"
-    s.homepage = "http://github.com/mojombo/jekyll"
+    s.homepage = "http://github.com/tatey/jekyll"
     s.description = "Jekyll is a simple, blog aware, static site generator."
     s.authors = ["Tom Preston-Werner"]
-    s.rubyforge_project = "jekyll"
     s.files.exclude 'test/dest'
     s.test_files.exclude 'test/dest'
     s.add_dependency('RedCloth', '>= 4.2.1')
@@ -21,10 +20,11 @@ begin
     s.add_dependency('maruku', '>= 0.5.9')
     s.add_dependency('directory_watcher', '>= 1.1.1')
     s.add_dependency('open4', '>= 0.9.6')
+    s.add_dependency('less', '>= 1.2.17')
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install jeweler --version '>= 0.11.0'"
-  exit(1)
+  abort "Jeweler not available. Install it with: gem install jeweler --version '>= 0.11.0'"
 end
 
 Rake::TestTask.new do |t|

@@ -1,3 +1,9 @@
+== 0.5.5 / 2009-11-29
+  * Enhancements
+    * LESS -> CSS 
+    * Growl notifications
+    * Permalink liquid tag for linking to published posts
+
 == 0.5.4 / 2009-08-23
   * Bug Fixes
     * Do not allow symlinks (security vulnerability)

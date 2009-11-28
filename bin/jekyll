@@ -16,6 +16,7 @@ Basic Command Line Usage:
 HELP
 
 require 'optparse'
+require 'notifier'
 require 'jekyll'
 
 exec = {}
@@ -57,9 +58,12 @@ opts = OptionParser.new do |opts|
       options['paginate'] = per_page.to_i
       raise ArgumentError if options['paginate'] == 0
     rescue
-      puts 'you must specify a number of posts by page bigger than 0'
-      exit 0
+      abort 'You must specify a number of posts by page bigger than 0'
     end
+  end
+  
+  opts.on("--growl", "Growl notifications") do
+    options['growl'] = true
   end
 
   opts.on("--version", "Display current version") do
@@ -80,8 +84,7 @@ case ARGV.size
     options['source']      = ARGV[0]
     options['destination'] = ARGV[1]
   else
-    puts "Invalid options. Run `jekyll --help` for assistance."
-    exit(1)
+    abort "Invalid options. Run `jekyll --help` for assistance."
 end
 
 options = Jekyll.configuration(options)
@@ -100,14 +103,15 @@ def globs(source)
   end
 end
 
-# Create the Site
+# Configure the notifier and create the site
+notifier = Notifier.new(options['growl'], source, destination)
 site = Jekyll::Site.new(options)
 
 # Run the directory watcher for auto-generation, if required
 if options['auto']
   require 'directory_watcher'
 
-  puts "Auto-regenerating enabled: #{source} -> #{destination}"
+  notifier.notify "Auto-regenerating enabled: #{source} -> #{destination}"
 
   dw = DirectoryWatcher.new(source)
   dw.interval = 1
@@ -115,8 +119,9 @@ if options['auto']
 
   dw.add_observer do |*args|
     t = Time.now.strftime("%Y-%m-%d %H:%M:%S")
-    puts "[#{t}] regeneration: #{args.size} files changed"
+    notifier.notify "[#{t}] regeneration: #{args.size} files changed"
     site.process
+    notifier.success
   end
 
   dw.start
@@ -125,9 +130,9 @@ if options['auto']
     loop { sleep 1000 }
   end
 else
-  puts "Building site: #{source} -> #{destination}"
+  notifier.notify "Building site: #{source} -> #{destination}"
   site.process
-  puts "Successfully generated site: #{source} -> #{destination}"
+  notifier.success
 end
 
 # Run the server on the specified port, if required

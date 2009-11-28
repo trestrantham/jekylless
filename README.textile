@@ -22,12 +22,19 @@ h2. Diving In
 
 h2. Dependencies
 
+h3. Required
+
 * RedCloth: Textile support
 * Liquid: Templating system
 * Classifier: Generating related posts
 * Maruku: Default markdown engine
 * Directory Watcher: Auto-regeneration of sites
 * Open4: Talking to pygments for syntax highlighting
+* LESS: Leaner CSS
+
+h3. Optional
+
+* Growl: Display notifications via Growl
 
 h2. License
 
