@@ -25,7 +25,7 @@ EOF
   end
 end
 
-Given /^I have an "(.*)" file that contains "(.*)"$/ do |file, text|
+Given /^I have an? "(.*)" file that contains "(.*)"$/ do |file, text|
   File.open(file, 'w') do |f|
     f.write(text)
     f.close

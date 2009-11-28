@@ -8,11 +8,10 @@ require 'fileutils'
 require 'time'
 require 'yaml'
 
-# stdlib
-
 # 3rd party
 require 'liquid'
 require 'redcloth'
+require 'less'
 
 # internal requires
 require 'jekyll/core_ext'

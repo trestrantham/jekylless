@@ -93,7 +93,7 @@ module Jekyll
     def process
       self.reset
       self.read_layouts
-      self.transform_pages
+      self.transform
       self.write_posts
     end
 
@@ -165,7 +165,7 @@ module Jekyll
     #            recursively as it descends through directories
     #
     # Returns nothing
-    def transform_pages(dir = '')
+    def transform(dir = '')
       base = File.join(self.source, dir)
       entries = filter_entries(Dir.entries(base))
       directories = entries.select { |e| File.directory?(File.join(base, e)) }
@@ -182,9 +182,14 @@ module Jekyll
         entries.each do |f|
           if File.directory?(File.join(base, f))
             next if self.dest.sub(/\/$/, '') == File.join(base, f)
-            transform_pages(File.join(dir, f))
+            transform(File.join(dir, f))
           elsif Pager.pagination_enabled?(self.config, f)
             paginate_posts(f, dir)
+          elsif File.extname(File.join(self.source, dir, f)) == '.less'
+            FileUtils.mkdir_p(File.join(self.dest, dir))
+            File.open(File.join(self.dest, dir, f).sub(/less$/, 'css'), 'w') do |css|
+              css.write(Less::Engine.new(File.new(File.join(self.source, dir, f))).to_css)
+            end
           else
             first3 = File.open(File.join(self.source, dir, f)) { |fd| fd.read(3) }
             if first3 == "---"
