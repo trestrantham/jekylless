@@ -22,19 +22,28 @@ h2. Diving In
 
 h2. Dependencies
 
-h3. Required
 
-* RedCloth: Textile support
-* Liquid: Templating system
-* Classifier: Generating related posts
-* Maruku: Default markdown engine
-* Directory Watcher: Auto-regeneration of sites
-* Open4: Talking to pygments for syntax highlighting
-* LESS: Leaner CSS
 
-h3. Optional
+h2. Runtime Dependencies
+
+* RedCloth: Textile support (Ruby)
+* Liquid: Templating system (Ruby)
+* Classifier: Generating related posts (Ruby)
+* Maruku: Default markdown engine (Ruby)
+* Directory Watcher: Auto-regeneration of sites (Ruby)
+* Open4: Talking to pygments for syntax highlighting (Ruby)
+* Pygments: Syntax highlighting (Python)
+
+h2. Optional
 
 * Growl: Display notifications via Growl
+* LESS: Leaner CSS
+
+h2. Developer Dependencies
+
+* Shoulda: Test framework (Ruby)
+* RR: Mocking (Ruby)
+* RedGreen: Nicer test output (Ruby)
 
 h2. License
 
