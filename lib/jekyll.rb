@@ -29,7 +29,7 @@ require 'jekyll/albino'
 require 'jekyll/static_file'
 
 # for the ordanalize support
-require 'active_support'
+#require 'active_support'
 
 module Jekyll
   # Default options. Overriden by values in _config.yml or command-line opts.

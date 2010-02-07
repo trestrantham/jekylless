@@ -36,27 +36,33 @@ module Jekyll
     # Returns nothing
     def transform
       case self.content_type
-      when 'textile'
-        self.ext = ".html"
-        self.content = self.site.textile(self.content)
-      when 'markdown'
-        self.ext = ".html"
-        self.content = self.site.markdown(self.content)
+        when 'textile'
+          self.ext = ".html"
+          self.content = self.site.textile(self.content)
+        when 'markdown'
+          self.ext = ".html"
+          self.content = self.site.markdown(self.content)
+        when 'less'
+          self.ext = ".css"
+          self.name = self.name.sub(/less$/, 'css')
+          self.content = self.site.less(self.content)
       end
     end
 
     # Determine which formatting engine to use based on this convertible's
     # extension
     #
-    # Returns one of :textile, :markdown or :unknown
+    # Returns one of :textile, :markdown, :less or :unknown
     def content_type
       case self.ext[1..-1]
-      when /textile/i
-        return 'textile'
-      when /markdown/i, /mkdn/i, /md/i, /mkd/i
-        return 'markdown'
-      end
-      return 'unknown'
+        when /textile/i
+          return 'textile'
+        when /markdown/i, /mkdn/i, /md/i, /mkd/i
+          return 'markdown'
+        when /less/i
+          return 'less'
+        end
+          return 'unknown'
     end
 
     # Add any necessary layouts to this convertible document

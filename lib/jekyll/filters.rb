@@ -10,10 +10,11 @@ module Jekyll
     end
 
     def date_to_long_string(date)
-      ordinal =  date.strftime("%d").to_i.ordinalize
-      date.strftime("#{ordinal} %B, %Y")
+      #ordinal =  date.strftime("%d").to_i.ordinalize
+      #date.strftime("#{ordinal} %B, %Y")
       #date.strftime("%B #{ordinal}, %Y at %H:%M %Z")
-      #date.strftime("%d %B %Y")
+      #date.strftime("#{ordinal} %B %Y")
+      date.strftime("%d %B %Y")
     end
     
     def date_to_year(date)

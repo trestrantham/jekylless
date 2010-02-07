@@ -88,6 +88,10 @@ module Jekyll
     def textile(content)
       RedCloth.new(content).to_html
     end
+    
+    def less(content)
+      Less::Engine.new(content).to_css
+    end
 
     # Do the actual work of processing the site and generating the
     # real deal.  Now has 4 phases; reset, read, render, write.  This allows
