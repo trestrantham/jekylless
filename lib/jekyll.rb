@@ -28,6 +28,9 @@ require 'jekyll/tags/permalink'
 require 'jekyll/albino'
 require 'jekyll/static_file'
 
+# for the ordanalize support
+require 'active_support'
+
 module Jekyll
   # Default options. Overriden by values in _config.yml or command-line opts.
   # (Strings rather symbols used for compatability with YAML)

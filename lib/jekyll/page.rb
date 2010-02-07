@@ -95,6 +95,7 @@ module Jekyll
         FileUtils.mkdir_p(path)
         path = File.join(path, "index.html")
       end
+      
 
       File.open(path, 'w') do |f|
         f.write(self.output)

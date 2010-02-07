@@ -10,7 +10,22 @@ module Jekyll
     end
 
     def date_to_long_string(date)
-      date.strftime("%d %B %Y")
+      ordinal =  date.strftime("%d").to_i.ordinalize
+      date.strftime("#{ordinal} %B, %Y")
+      #date.strftime("%B #{ordinal}, %Y at %H:%M %Z")
+      #date.strftime("%d %B %Y")
+    end
+    
+    def date_to_year(date)
+      date.strftime("%Y")
+    end
+    
+    def date_to_month(date)
+      date.strftime("%B")
+    end
+    
+    def date_to_day(date)
+      date.strftime("%d")
     end
 
     def date_to_xmlschema(date)

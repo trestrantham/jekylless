@@ -1,7 +1,7 @@
 module Jekyll
 
   class Site
-    attr_accessor :config, :layouts, :posts, :pages, :static_files, :categories, :exclude, :permalinks
+    attr_accessor :config, :layouts, :posts, :pages, :static_files, :categories, :exclude, :permalinks,
                   :source, :dest, :lsi, :pygments, :permalink_style, :tags
 
     # Initialize the site
@@ -205,12 +205,6 @@ module Jekyll
           if first3 == "---"
             # file appears to have a YAML header so process it as a page
             pages << Page.new(self, self.source, dir, f)
-          elsif File.extname(File.join(self.source, dir, f)) == '.less'
-            FileUtils.mkdir_p(File.join(self.dest, dir))
-            File.open(File.join(self.dest, dir, f).sub(/less$/, 'css'), 'w') do |css|
-              css_file = css.write(Less::Engine.new(File.new(File.join(self.source, dir, f))).to_css)
-              static_files << StaticFile.new(css_file, css_file.source, dir, f)
-            end
           else
             # otherwise treat it as a static file
             static_files << StaticFile.new(self, self.source, dir, f)

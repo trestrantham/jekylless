@@ -18,10 +18,19 @@ module Jekyll
     # Write the static file to the destination directory.
     #   +dest+ is the String path to the destination dir
     #
+    # Compiles .less files to css
+    #
     # Returns nothing
     def write(dest)
       FileUtils.mkdir_p(File.join(dest, @dir))
-      FileUtils.cp(File.join(@base, @dir, @name), File.join(dest, @dir, @name))
+      
+      if File.extname(File.join(@base, @dir, @name)) == '.less'
+        File.open(File.join(dest, @dir, @name.sub(/less$/, 'css')), 'w') do |f|
+          f.write(Less::Engine.new(File.open(File.join(@base, @dir, @name)), 'r').to_css)
+        end
+      else
+        FileUtils.cp(File.join(@base, @dir, @name), File.join(dest, @dir, @name))
+      end
     end
   end
 
