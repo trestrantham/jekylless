@@ -16,7 +16,9 @@ If you want to know more about the motivations behind the creation of this fork,
 
 [LESS][lesscss] is an extension to CSS which adds variables, nesting and mixins. Unlike Sass, LESS strives for familiarity and backwards compatibility with CSS.
 
-You only have to change your css files extension to .less and add two lines of tripple dashes (`---`) on the top of the file, to tell jekyll, that this file is not a static file anymore and that it has to be compiled from now on.
+To get the LESS integration to work, you'll need to install the [less gem][lessgem].
+
+After that you only need to change your css files extension to .less and add two lines of tripple dashes (`---`) to the top of your less files, to tell jekyll, that this file is not a static file anymore and that it has to be compiled from now on.
 
 
 
@@ -69,6 +71,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 [jekyll]: http://github.com/mojombo/jekyll
 [lesscss]: http://lesscss.org/
+[lessgem]: http://gemcutter.org/gems/less
 [growlnotify]: http://growl.info/documentation/growlnotify.php
 [growlgem]: http://gemcutter.org/gems/growl
 [motivation]: http://tatey.com/2009/12/05/forking-jekyll-now-with-less-and-growl-notifications/
