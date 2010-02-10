@@ -8,6 +8,8 @@ Jekylless is a fork of [jekyll][jekyll], a blog aware, static site generator. We
 * Liquid permalink tag
 * Time tag in blog posts
 
+If you want to know more about the motivations behind the creation of this fork, check out Tate Johnson's [blog post][motivation] about creating this fork.
+
 *********************
 
 ### Integration of LESS
@@ -69,3 +71,4 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 [lesscss]: http://lesscss.org/
 [growlnotify]: http://growl.info/documentation/growlnotify.php
 [growlgem]: http://gemcutter.org/gems/growl
+[motivation]: http://tatey.com/2009/12/05/forking-jekyll-now-with-less-and-growl-notifications/
