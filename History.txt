@@ -26,12 +26,11 @@
     * Properly wrap code blocks (#91)
     * Add javascript mime type for webrick (#98)
     
-== 0.5.5 / 2009-11-29 - Changes from tatey
+== 0.5.5 / 2009-11-29 [http://github.com/tatey/jekylless]
   * Enhancements
     * LESS -> CSS 
     * Growl notifications
-    * Permalink liquid tag for linking to published posts
-
+    * Permalink liquid tag for linking to published
 
 == 0.5.5 / 2010-01-08
   * Bug Fixes

@@ -6,12 +6,12 @@ begin
   gem 'jeweler', '>= 0.11.0'
   require 'jeweler'
   Jeweler::Tasks.new do |s|
-    s.name = "tatey-jekyll"
-    s.summary = %Q{Jekyll is a simple, blog aware, static site generator.}
-    s.email = "tom@mojombo.com"
-    s.homepage = "http://github.com/tatey/jekyll"
-    s.description = "Jekyll is a simple, blog aware, static site generator."
-    s.authors = ["Tom Preston-Werner"]
+    s.name = "jekylless"
+    s.summary = %Q{Jekyll + LESS, Growl notifications and other enhancements.}
+    s.email = "jekylless@tatey.com"
+    s.homepage = "http://github.com/tatey/jekylless"
+    s.description = "Jekyll + LESS, Growl notifications and other enhancements."
+    s.authors = ["Tom Preston-Werner", "Tate Johnson", "Wolfgang König"]
     s.files.exclude 'test/dest'
     s.test_files.exclude 'test/dest'
     s.add_dependency('RedCloth', '>= 4.2.1')

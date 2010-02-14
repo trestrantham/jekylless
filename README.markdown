@@ -8,7 +8,7 @@ Jekylless is a fork of [jekyll][jekyll], a blog aware, static site generator. We
 * Liquid permalink tag
 * Time tag in blog posts
 
-If you want to know more about the motivations behind the creation of this fork, check out Tate Johnson's [blog post][motivation] about creating this fork.
+If you want to know more about the motivations behind the creation of this fork, check out Tate Johnson's [blog post][motivation] about creating this fork. Jekylless was previously known as tatey-jekyll.
 
 *********************
 
@@ -56,18 +56,26 @@ In the original jekyll, the time of the blog posts is set to 00:00:00 of the beg
 
 *********************
 
+### Installation
+
+Jekylless executable conflicts with Jekyll. You'll need to uninstall Jekyll before installing Jekylless.
+
+    $ gem uninstall jekyll
+    $ gem install jekylless
+
+*********************
+
 ### License
 
 (The MIT License)
 
-Copyright (c) 2008 Tate Johnson, Wolfgang König
+Copyright (c) 2008 Tom Preston-Werner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 
 [jekyll]: http://github.com/mojombo/jekyll
 [lesscss]: http://lesscss.org/
