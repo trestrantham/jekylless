@@ -37,12 +37,18 @@ module Jekyll
       self.categories = dir.split('/').reject { |x| x.empty? }
       self.process(name)
       self.read_yaml(@base, name)
-
-      #If we've added a date and time to the yaml, use that instead of the filename date
-      #Means we'll sort correctly.
+      
+      # If we've added a date and time to the yaml, use that instead of the filename date.
+      # Means we'll sort correctly.
       if self.data.has_key?('date')
         # ensure Time via to_s and reparse
-        self.date = Time.parse(self.data["date"].to_s)
+        self.date = Time.parse(self.data['date'].to_s)
+      end
+      
+      if self.data.key?('time')        
+        time      = Time.parse(self.data['time'])
+        self.date = Time.mktime(self.date.year, self.date.month, 
+          self.date.day, time.hour, time.min, time.sec)
       end
 
       if self.data.has_key?('published') && self.data['published'] == false
@@ -201,10 +207,6 @@ module Jekyll
     #
     # Returns <Hash>
     def to_liquid
-      if self.data.key?("time")
-        time = Time.parse(self.data["time"])
-        self.date = Time.mktime(self.date.year, self.date.month, self.date.day, time.hour, time.min)
-      end
       { "title"      => self.data["title"] || self.slug.split('-').select {|w| w.capitalize! || w }.join(' '),
         "url"        => self.url,
         "date"       => self.date,

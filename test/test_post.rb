@@ -228,11 +228,19 @@ class TestPost < Test::Unit::TestCase
       should "recognize date in yaml" do
         post = setup_post("2010-01-09-date-override.textile")
         assert_equal "/2010/01/10/date-override.html", post.url
+        assert_equal Time.parse('2010-01-10'), post.date
       end
 
+      should "recognize datetime in yaml" do
+        post = setup_post("2010-01-09-datetime-override.textile")
+        assert_equal "/2010/01/10/datetime-override.html", post.url
+        assert_equal Time.parse('2010-01-10 13:07:09'), post.date
+      end
+      
       should "recognize time in yaml" do
-        post = setup_post("2010-01-09-time-override.textile")
-        assert_equal "/2010/01/10/time-override.html", post.url
+        post = setup_post("2010-02-15-time-override.textile")
+        assert_equal "/2010/02/15/time-override.html", post.url
+        assert_equal Time.parse('2010-02-15 22:16:02'), post.date
       end
 
       should "recognize category in yaml" do
