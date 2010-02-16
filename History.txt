@@ -6,6 +6,10 @@
     * Fix extension munging when pretty permalinks are enabled (#64)
     * Stop sorting categories (#33)
 
+== 0.5.7 / 2010-02-16 [http://github.com/tatey/jekylless]
+  * Minor Enhancemnets
+    * Specify a post’s time in the YAML front matter
+
 == 0.5.7 / 2010-01-12
   * Minor Enhancements
     * Allow overriding of post date in the front matter (#62, #38)

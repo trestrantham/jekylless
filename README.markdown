@@ -18,7 +18,7 @@ If you want to know more about the motivations behind the creation of this fork,
 
 To get the LESS integration to work, you'll need to install the [less gem][lessgem].
 
-After that you only need to change your css files extension to .less and add two lines of tripple dashes (`---`) to the top of your less files, to tell jekyll, that this file is not a static file anymore and that it has to be compiled from now on.
+After that you only need to change your css files extension to .less and add two lines of triple dashes (`---`) to the top of your less files, to tell jekyll, that this file is not a static file anymore and that it has to be compiled from now on.
 
 
 
